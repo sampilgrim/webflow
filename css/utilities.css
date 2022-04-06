@@ -1,0 +1,45 @@
+/* hides from user, but not from screen readers */
+.visually-hidden { 
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+/* hide from all */
+[hidden], .hidden {
+    display: none !important;
+  }
+
+/* applies flow spacing */
+.flow > * + *, .rich > * + * {
+  margin-top: var(--flow-space, 1em); 
+}
+.flow, .rich {
+    --flow-space: 1em; 
+}
+
+/* full width element */
+.full-bleed {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+/* no margin */
+/* use with care */
+.nomargin-top {
+    margin-top: 0px !important;
+}
+.nomargin-bottom {
+    margin-bottom: 0px !important;
+}
+.nomargin {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

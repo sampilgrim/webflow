@@ -1,0 +1,24 @@
+/* NB - This CSS must be applied to the Webflow interface via a browser plugin like Stylebot. */
+
+/* Hiding the overlay when editing a symbol */
+[data-automation-id="focused-symbol-mask"] {
+    display: none;
+}
+
+/* Highlighting the Desktop breakpoint icon in the Designer when not on Desktop */
+[aria-label="Desktop - not active"] {
+    /*background-color: #fd508d !important; */
+    animation: flash 2s infinite ease-in-out;
+  }
+  
+  @keyframes flash {
+    0% {
+      background-color: #fd508d;
+      }
+    50% {
+      background-color: unset;
+      }
+    100% {
+      background-color: #fd508d;
+      }
+  }

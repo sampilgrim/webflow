@@ -1,0 +1,102 @@
+/* basic reset */
+* {
+    font-family:  'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+/* links in headings inherit parent styling */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: inherit;
+}
+
+/* define height weights and line height */
+h1, h2, h3, h4, h5, h6 {    
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,16,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+    --step--3: clamp(0.51rem, calc(0.60rem + -0.13vw), 0.58rem);
+    --step--2: clamp(0.64rem, calc(0.72rem + -0.11vw), 0.69rem);
+    --step--1: clamp(0.80rem, calc(0.85rem + -0.06vw), 0.83rem);
+    --step-0: clamp(1.00rem, calc(1.00rem + 0.00vw), 1.00rem);
+    --step-1: clamp(1.20rem, calc(1.18rem + 0.10vw), 1.25rem);
+    --step-2: clamp(1.44rem, calc(1.39rem + 0.24vw), 1.56rem);
+    --step-3: clamp(1.73rem, calc(1.64rem + 0.44vw), 1.95rem);
+    --step-4: clamp(2.07rem, calc(1.93rem + 0.72vw), 2.44rem);
+    --step-5: clamp(2.49rem, calc(2.27rem + 1.10vw), 3.05rem);
+    --step-6: clamp(2.99rem, calc(2.66rem + 1.62vw), 3.82rem);
+    --step-7: clamp(3.58rem, calc(3.12rem + 2.31vw), 4.77rem);
+}
+
+
+.heading-xxl {
+    font-size: var(--step-6);  
+}
+h1, .heading-xl {
+    font-size: var(--step-5);
+}
+h2, .heading-lg {
+    font-size: var(--step-4);
+}
+h3, .heading-md {
+    font-size: var(--step-3);
+}
+h4, .heading-sm {
+    font-size: var(--step-2);
+}
+h5, .heading-xs {
+    font-size: var(--step-1);
+}
+h6, .heading-xxs {
+    font-size: var(--step-1);
+}
+.text-size-lg {
+    font-size: var(--step-2); 
+}
+.text-size-md {
+    font-size: var(--step-1);  
+}
+.text-size-reg {
+    font-size: var(--step-0);
+}
+.text-size-sm {
+    font-size: var(--step--1);
+}
+.text-size-xs {
+    font-size: var(--step--2);
+}
+
+
+
+/*
+  .heading-xxl {  
+  }
+  h1, .heading-xl {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  h2, .heading-lg {
+    font-size: 2.0625rem;
+    line-height: 2.25rem;
+  }
+  h3, .heading-md {
+    font-size: 1.4375rem;
+    line-height: 1.5rem;
+  }
+  h4, .heading-sm {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  h5, .heading-xs {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  */
