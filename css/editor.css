@@ -2,3 +2,20 @@
 h1, h2, h3, h4, h5, h6, p, quote, li {
     min-height: 5px;
   }
+
+/* lock Editor fields where the field name contains a specified key word */
+.w-editor-bem-Field:has(.w-editor-bem-Field_Label_Text[data-automation-id*=“locked”]) {
+    pointer-events: none !important;
+    opacity: 0.5;
+}
+.w-editor-bem-Field:has(.w-editor-bem-Field_Label_Text[data-automation-id*=“locked”]) .w-editor-bem-Field_Label_Text::after {
+    content: “Locked”;
+    margin-left: 1em;
+    display: inline-block;
+    background-color: #EA6556;
+    color: white;
+    padding: 4px;
+    line-height: 1;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
