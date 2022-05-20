@@ -191,3 +191,10 @@ html.wf-design-mode .w-embed:empty {
   top: calc( -1.2em - 10px);
   outline: 1px solid var(--dev-grey);
 }
+
+
+/* highlight images without alt text in Editor */
+/* html.w-editor .w-editor-edit-fade-in img:not([alt]) {
+  outline: solid rgb(255 0 255 / 1) 4px;
+  outline-offset: -4px;
+} */

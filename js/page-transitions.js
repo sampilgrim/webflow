@@ -1,6 +1,8 @@
 /* Shows/hides WF animations on link click/page load - ie adds page transitions */
 /* need to add a WF animation for transitionTrigger class - see https://www.youtube.com/watch?v=XuYO4hY0HhU */
 
+/* NB - old method by Nelson etc uses initial states and does intro animation on page load trigger, which can result in a flash of page content before intro plays */
+
 /* CSS
 <style>
 body .transition {display: block}
