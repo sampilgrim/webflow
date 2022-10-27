@@ -1,3 +1,4 @@
+<style>
 :root {
   --dev-grey: #404040;
   --dev-lightgrey: #d9d9d9;
@@ -68,13 +69,16 @@ html.wf-design-mode div.dev-code .w-embed:hover {
 
 /* add common viewport overlays */
 
-/* hide viewports when not in Designer */
-/* by using the :not() we can use the stadard Webflow display: block / display: none controls on each viewport element to toggle on/off */
-html:not(.wf-design-mode) [class^="dev-viewport"] {
-    display: none;
+/* hide viewports and parent wrapper when not in Designer */
+html:not(.wf-design-mode) [class^="dev-vp"], html:not(.wf-design-mode) .dev-viewports {
+    display: none !important;
   }
-/* add styling to all viewport elements */
-html.wf-design-mode [class^="dev-viewport"] {
+/* remove pointer events on viewports and parent wrapper */
+html.wf-design-mode [class^="dev-vp"], html:not(.wf-design-mode) .dev-viewports {
+    pointer-events: none;
+}
+/* add styling to all viewports */
+html.wf-design-mode [class^="dev-vp"] {
     pointer-events: none;
     z-index: 999;
     margin: 0 auto;
@@ -82,24 +86,98 @@ html.wf-design-mode [class^="dev-viewport"] {
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
-    outline: 2px solid red;
+    outline: 2px solid var(--dev-blue) !important;	/* we need important to override the default .wf-empty style */
   }
+/* set the default for viewports to be hidden. The :where selector has a zero specificity, which allows us to then override the display style with the Webflow UI controls */
+:where([class^="dev-vp"]) {
+  display: none;
+}
+/* show viewport labels below viewport */
+html.wf-design-mode [class^="dev-vp"]:before {
+  content: var(--vp-name, attr(class));
+  color: white;
+  font-size: 10px;
+  line-height: 1.2;
+  padding: 4px;
+  background-color: var(--dev-blue);
+  display: inline-block;
+  position: absolute;
+  bottom: calc(0px - (10px * 1.2) - 10px);
+  outline: 2px solid var(--dev-blue);
+}
 /* set viewport element sizes */
-@media only screen and (min-width: 992px) {
-  html.wf-design-mode .dev-viewport--1440 {
+@media only screen and (min-width: 1px) { 
+  .dev-vp--1440 {
+    --vp-name: "1440 x 1024";
     width: 1440px;
-    height: 900px;
-    }
-  html.wf-design-mode .dev-viewport--1366 {
+    height: 1024px;
+  }
+  .dev-vp--1366 {
+    --vp-name: "1366 x 768";
     width: 1336px;
     height: 768px;
-    }
-  html.wf-design-mode .dev-viewport--1280 {
+  }
+  .dev-vp--1280 {
+    --vp-name: "1280 x 720";
     width: 1280px;
     height: 720px;
-    }
   }
-  
+  .dev-vp--iphone-se {
+    --vp-name: "iPhone SE";
+    width: 320px;
+    height: 568px;
+  }
+  .dev-vp--iphone-13-mini {
+    --vp-name: "iPhone 13 Mini";
+    width: 375px;
+    height: 812px;
+  }
+  .dev-vp--iphone-13-pro-max {
+    --vp-name: "iPhone 13 Pro Max";
+    width: 428px;
+    height: 926px;
+  }
+  .dev-vp--iphone-13 {
+    --vp-name: "iPhone 13";
+    width: 390px;
+    height: 844px;
+  }
+  .dev-vp--android-small {
+    --vp-name: "Android 360 x 640";
+    width: 360px;
+    height: 640px;
+  }
+  .dev-vp--android-large {
+    --vp-name: "Android 360 x 800";
+    width: 360px;
+    height: 800px;
+  }
+  .dev-vp--ipad-mini-83 {
+    --vp-name: "iPad mini 8.3";
+    width: 744px;
+    height: 1133px;
+  }
+  .dev-vp--ipad-pro-11 {
+    --vp-name: "iPad Pro 11";
+    width: 834px;
+    height: 1194px;
+  }
+  .dev-vp--surface-pro-8 {
+    --vp-name: "Surface Pro 8";
+    width: 1440px;
+    height: 960px;
+  }
+
+}
+/* sadly this doesn't work - there is a proposal to allow the attr() function to work with non-string values such as px values, but zero support so far - would have allowed for viewports to be defined using HTML attributes only, rather than classes */
+/*html.wf-design-mode .dev-vp {
+  width: attr(vp-width px);
+  height: attr(vp-height px);
+}*/
+/*html.wf-design-mode .dev-vp:before {
+  content: attr(vp-name);
+}*/
+
 
     
 /* show different elements in different environments */
@@ -163,14 +241,14 @@ html.wf-design-mode .w-embed:empty {
 
 
 
-/* display style names  on Style Guide page */
+/* display style names on Style Guide page */
 .style__classes, .style__classes [class^="style__"] {
   display: grid;
   grid-gap: 3rem;
   grid-template-columns: 1fr;
 }
 .style__classes div:not([class^="style__"]) {
-  all: initial; /* reset all properties so we can see all divs */
+	all: initial; /* reset all properties so we can see all divs */
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -191,3 +269,12 @@ html.wf-design-mode .w-embed:empty {
   top: calc( -1.2em - 10px);
   outline: 1px solid var(--dev-grey);
 }
+
+
+/* highlight images without alt text in Editor */
+/* html.w-editor .w-editor-edit-fade-in img:not([alt]) {
+  outline: solid rgb(255 0 255 / 1) 4px;
+  outline-offset: -4px;
+} */
+
+</style>
