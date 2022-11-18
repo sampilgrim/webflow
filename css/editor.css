@@ -3,19 +3,29 @@ h1, h2, h3, h4, h5, h6, p, quote, li {
     min-height: 5px;
   }
 
-/* lock Editor fields where the field name contains a specified key word */
-.w-editor-bem-Field:has(.w-editor-bem-Field_Label_Text[data-automation-id*=“locked”]) {
-    pointer-events: none !important;
-    opacity: 0.5;
+
+/* hide locked controls for plain text, rich text, single references, options, numbers and switches */
+/* NB we can't target color, date, multiref, image and file fields */
+.w-editor-bem-TextInput[data-automation-id*="locked"],
+.w-editor-bem-RichTextInput_Content[data-automation-id*="locked"],
+.w-editor-bem-SelectInput_Trigger[data-automation-id*="locked"],
+.w-editor-bem-NumberInput_Ticks_Button[data-automation-id*="locked"],
+.w-editor-bem-Switch[data-automation-id*="locked"],
+.w-editor-bem-Button-inline[data-automation-id*="locked"]
+{
+	pointer-events: none;
+	display: none !important;
 }
-.w-editor-bem-Field:has(.w-editor-bem-Field_Label_Text[data-automation-id*=“locked”]) .w-editor-bem-Field_Label_Text::after {
-    content: “Locked”;
-    margin-left: 1em;
+
+/* add locked tags to control labels */
+.w-editor-bem-Field_Label_Text[data-automation-id*="locked"]::after {
+	content: "Locked";
+    margin-left: 8px;
     display: inline-block;
     background-color: #EA6556;
     color: white;
     padding: 4px;
     line-height: 1;
     border-radius: 4px;
-    pointer-events: none !important;
+    pointer-events: none;
 }
